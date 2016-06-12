@@ -1,4 +1,5 @@
-var path = require('path') //eslint-disable-line no-var
+var path = require('path'), //eslint-disable-line no-var
+    webpack = require('webpack')
 
 module.exports = {
   entry: [
@@ -11,10 +12,17 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: 'http://localhost:8080/public/dist/'
   },
-  devtool: 'eval',
+  devtool: 'source-map',
   devServer: {
     headers: { 'Access-Control-Allow-Origin': '*' }
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('development')
+      }
+    })
+  ],
   module: {
     loaders: [
       {
@@ -22,7 +30,7 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loaders: [
           'react-hot',
-          'babel-loader'
+          'babel'
         ]
       },
       {

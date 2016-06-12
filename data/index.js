@@ -1,4 +1,4 @@
-export const lines = {
+exports.lines = {
   'bakerloo': {
     'title': 'Bakerloo',
     'color': '#795548',
@@ -92,7 +92,7 @@ export const lines = {
   }
 }
 
-export const stations = [
+exports.stations = [
   {
     'id': '940GZZLUBST',
     'title': 'Baker Street',
@@ -2196,7 +2196,7 @@ export const stations = [
   }
 ]
 
-export const stationsOnLines = {
+exports.stationsOnLines = {
   'bakerloo': [
     '940GZZLUBST',
     '940GZZLUCHX',
@@ -2767,7 +2767,7 @@ export const stationsOnLines = {
   ]
 }
 
-export const sharedPlatforms = {
+exports.sharedPlatforms = {
   '940GZZLUEMB': [
     [
       'circle',

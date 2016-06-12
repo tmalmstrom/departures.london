@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
-import createLogger from 'redux-logger'
 
 import reducer from '../reducers/index'
 import { lines, stations, stationsOnLines } from './../../../data/index'
@@ -13,12 +12,21 @@ const initialState = {
   stationsOnLines
 }
 
+const middleware = [thunk]
+
+if (process.env.NODE_ENV !== 'production') {
+  const createLogger = require('redux-logger'),
+        logger = createLogger()
+
+  middleware.push(logger)
+}
+
 function configureStore () {
   const store = createStore(
     reducer,
     initialState,
     compose (
-      applyMiddleware(thunk, createLogger()),
+      applyMiddleware(...middleware),
       window.devToolsExtension ? window.devToolsExtension() : f => f
     )
   )

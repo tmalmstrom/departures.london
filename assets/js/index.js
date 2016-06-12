@@ -8,6 +8,8 @@ import {
   Router
 } from 'react-router'
 
+import fetch from './utils/fetch'
+
 import App from './containers/App'
 import Departures from './containers/Departures'
 import Index from './containers/Index'

@@ -88,13 +88,21 @@ $desktop-width: 1400px;
 
 
 /** BASE **/
-html, body, #app {
+html {
+  height: 100%;
+  overflow: hidden;
+}
+
+body, #app {
   height: 100vh;
+  width: 100%;
   user-select: none;
   font-family: london-tube, Sans-Serif;
   letter-spacing: 0.5px;
   color: #F8F8F8;
+  overflow: auto;
   -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
 }
 
 a {
@@ -195,6 +203,7 @@ a {
 
 .departures {
   display: block !important;
+  -webkit-overflow-scrolling: touch;
   height: calc(100vh + 15px); //scrollbars
   position: absolute;
   top: 0;
@@ -207,8 +216,9 @@ a {
 
     @include palm {
       width: 90%;
-      overflow-x: hidden;
-      overflow-y: scroll;
+      overflow: auto;
+      //overflow-x: hidden;
+      //overflow-y: scroll;
     }
 }
   .departure-item {

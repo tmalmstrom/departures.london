@@ -1,9 +1,9 @@
 const express = require('express'),
       bodyParser = require('body-parser'),
       path = require('path'),
-      cors = require('cors'),
       hbs = require('hbs'),
       errorHandler = require('errorhandler'),
+      compression = require('compression'),
       port = process.env.PORT || 8000,
       env = process.env.NODE_ENV || 'DEV'
 
@@ -18,22 +18,12 @@ app.use(bodyParser.urlencoded({
   extended: false
 }))
 app.use(bodyParser.json())
-app.use(cors())
+app.use(compression())
 
 app.set('views', `${__dirname}/public`)
 app.set('view engine', 'html')
 app.engine('html', hbs.__express)
 app.use(express.static(path.join(__dirname, 'public')))
-
-
-if (env == 'DEV') {
-  app.use(errorHandler())
-} else {
-  app.use(function (err, req, res) {
-    console.error(err)
-    res.send(500, 'Sorry, there\'s been an error!')
-  })
-}
 
 
 app.get(`${ API_URL }/:line/:stationId`, require('./routes/departures'))

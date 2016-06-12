@@ -1,5 +1,9 @@
-import { chain, filter, sortBy, forEach } from 'lodash' // eslint-disable-line
-import 'whatwg-fetch'
+import {
+  chain,
+  filter,
+  sortBy,
+  forEach
+} from 'lodash'
 
 import {
   FILTERED_STATIONS_SUCCESS,

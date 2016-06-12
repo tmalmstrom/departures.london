@@ -51,11 +51,8 @@ export class Departures extends Component {
 
     const foundStation = find(filteredStations, (st) => st.url === station)
 
-    if (!foundStation) {
-      console.log('No stations found')
-    } else {
-      dispatch(getDepartures(line, foundStation.id))//@todo error handling if no stations found (URL error more likely)
-    }
+    //@todo error handling if no stations found (URL error more likely)
+    if (foundStation) return dispatch(getDepartures(line, foundStation.id))
   }
 
   render () {
