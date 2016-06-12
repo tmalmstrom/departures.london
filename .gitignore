@@ -1,0 +1,13 @@
+node_modules/
+bower_components/
+public/dist/
+.DS_STORE
+npm-debug.log
+tags
+logs/*
+*.log
+.env
+coverage/
+test/coverage
+api.log
+error.log

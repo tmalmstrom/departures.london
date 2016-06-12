@@ -1,0 +1,276 @@
+@import '../../node_modules/inuit-defaults/settings.defaults';
+@import '../../node_modules/inuit-normalize/generic.normalize';
+@import '../../node_modules/inuit-shared/generic.shared';
+@import '../../node_modules/inuit-box-sizing/generic.box-sizing';
+
+
+/** FONTS **/
+@font-face {
+  font-family: 'london-tube';
+  src: url('./../../public/fonts/london-tube.woff2') format('woff2'),
+       url('./../../public/fonts/london-tube.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/** SETTINGS **/
+$palm-width: 690px;
+$lap-width: 1200px;
+$desktop-width: 1400px;
+
+
+/** MIXINS **/
+@mixin palm {
+  @media (max-width: #{$palm-width}) {
+    @content;
+  }
+}
+
+@mixin lap {
+  @media (max-width: #{$lap-width}) {
+    @content;
+  }
+}
+
+
+/** UTILS **/
+.u-scroll-wrapper {
+  overflow-y: scroll;
+}
+
+.t-left {
+  text-align: left;
+}
+
+.is-dark {
+  color: #444444;
+}
+
+.has-children {
+  text-align: left;
+
+    & .index-item {
+      padding-left: 27px;
+      text-align: left;
+    }
+}
+
+.sticky-bottom {
+  position: fixed;
+  display: block;
+  bottom: -15px; //scrollbar
+  font-size: 10px;
+  font-family: Sans-Serif;
+  font-weight: 300;
+
+    a {
+      text-decoration: underline;
+    }
+
+    @include palm {
+      display: none;
+    }
+}
+
+/** MISC **/
+.back {
+  display: none;
+}
+
+.spinner {
+  font-size: 72px;
+  opacity: 0.3;
+  animation: fadeInOut 0.9s ease-in 0 alternate;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+}
+
+
+/** BASE **/
+html, body, #app {
+  height: 100vh;
+  user-select: none;
+  font-family: london-tube, Sans-Serif;
+  letter-spacing: 0.5px;
+  color: #F8F8F8;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/** LAYOUT **/
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.inner-flex {
+  width: 100%;
+  flex: 1;
+
+    & > h1 {
+      word-break: break-word;
+    }
+
+    @include lap {
+      flex: 1 0 auto;
+    }
+}
+
+.full-height {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/** PAGES **/
+.index {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+  .index-item {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+
+      span {
+        opacity: 0.8;
+        font-size: 80%;
+      }
+  }
+
+.stations {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 85%;
+  box-shadow: -5px 0 10px rgba(0,0,0,0.5);
+  overflow: hidden;
+  transition: background 450ms ease-out;
+  text-align: left;
+
+    @include palm {
+      width: 94%;
+      box-shadow: -1px 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    &.has-children .u-scroll-wrapper > div {
+      @include palm {
+        display: none;
+      }
+    }
+
+    &.has-children .back {
+      display: none;
+
+      @include palm {
+        display: block;
+        position: fixed;
+        top: 50%;
+        left: 9%;
+        font-size: 44px;
+        transform: translate3d(0, -50%, 0);
+      }
+    }
+}
+  .station-item {
+    display: block;
+    padding: 24px;
+  }
+
+.departures {
+  display: block !important;
+  height: calc(100vh + 15px); //scrollbars
+  position: absolute;
+  top: 0;
+  right: -15px; //scrollbars
+  width: 75%;
+  text-align: center;
+  overflow: scroll;
+  margin-right: 15px; //scrolling
+  padding: 0 24px;
+
+    @include palm {
+      width: 90%;
+      overflow-x: hidden;
+      overflow-y: scroll;
+    }
+}
+  .departure-item {
+    margin-bottom: 44px;
+  }
+    .departure-item__content {
+      letter-spacing: 1.5px;
+    }
+
+.four-one-four {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #444;
+}
+
+
+
+
+/** ANIMATIONS **/
+@-webkit-keyframes fadeInOut {
+  0% { opacity: 0.3; transform: scale(0.95); }
+  100% { opacity: 0.9; transform: scale(1); }
+}
+@keyframes fadeInOut {
+  0% { opacity: 0.3; transform: scale(0.95); }
+  100% { opacity: 0.9; transform: scale(1); }
+}
+
+.slide-in-appear {
+  transform: translate3d(100%, 0px, 0px);
+}
+.slide-in-appear.slide-in-appear-active {
+  transform: translate3d(0%, 0px, 0px);
+  transition: transform 0.7s ease;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+  .example-enter.example-enter-active {
+    opacity: 1;
+    transition: opacity 1s ease;
+  }
+
+.example-leave {
+  display: none;
+  opacity: 1;
+}
+  .example-leave.example-leave-active {
+    display: none;
+    opacity: 0.01;
+    transition: opacity 0s ease-in;
+  }
+
+.example-appear {
+  opacity: 0.01;
+}
+  .example-appear.example-appear-active {
+    opacity: 1;
+    transition: opacity .5s ease-in;
+  }

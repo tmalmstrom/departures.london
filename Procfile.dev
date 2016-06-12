@@ -1,0 +1,1 @@
+web: nodemon --use-strict --harmony --harmony_destructuring app.js
