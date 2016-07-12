@@ -2,10 +2,8 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       path = require('path'),
       hbs = require('hbs'),
-      errorHandler = require('errorhandler'),
       compression = require('compression'),
-      port = process.env.PORT || 8000,
-      env = process.env.NODE_ENV || 'DEV'
+      port = process.env.PORT || 8000
 
 let app = express()
 

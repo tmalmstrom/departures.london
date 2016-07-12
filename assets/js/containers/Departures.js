@@ -97,7 +97,7 @@ Departures.displayName = 'Departures'
 
 Departures.propTypes = {
   departures: PropTypes.object.isRequired,
-  filteredStations: PropTypes.array.isRequired,
+  filteredStations: PropTypes.object.isRequired,
   lines: PropTypes.object.isRequired,
   params: PropTypes.shape({
     line: PropTypes.string.isRequired,
@@ -106,15 +106,10 @@ Departures.propTypes = {
   route: PropTypes.object.isRequired
 }
 
-function mapStateToProps (state) {
-  const { departures, countdown, filteredStations, lines } = state
-
-  return {
-    countdown,
-    departures,
-    filteredStations,
-    lines
-  }
-}
+const mapStateToProps = (state) => ({
+  departures: state.departures,
+  lines: state.lines,
+  filteredStations: state.filteredStations
+})
 
 export default connect(mapStateToProps)(Departures)

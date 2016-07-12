@@ -1,9 +1,11 @@
+/*eslint-disable */
 import {
   chain,
   filter,
   sortBy,
   forEach
 } from 'lodash'
+/*eslint-enable */
 
 import {
   FILTERED_STATIONS_SUCCESS,
@@ -43,12 +45,10 @@ export function getFilteredSortedStations (line) {
  * @param {array} filteredStations - array of objects containing station data
  * @returns {object}
  */
-function successFilteredStations (filteredStations) {
-  return {
-    type: FILTERED_STATIONS_SUCCESS,
-    filteredStations
-  }
-}
+export const successFilteredStations = (filteredStations) => ({
+  type: FILTERED_STATIONS_SUCCESS,
+  filteredStations
+})
 
 /**
  * API call to fetch the departure times for the specified line and station.
@@ -57,7 +57,7 @@ function successFilteredStations (filteredStations) {
  * @param {string} stationId
  * @returns {object} result of API call, a JSON object with departure data, blank data or error message.
  */
-export function getDepartures (line, stationId) {
+export const getDepartures = (line, stationId) => {
   //Syntax sugar for the user so we can have an /overground/ url
   //backend api requires `/london-overground`, because.
   if (line === 'overground') line = 'london-overground'
@@ -77,11 +77,9 @@ export function getDepartures (line, stationId) {
  *
  * @returns {object}
  */
-function fetchingDepartures () {
-  return {
-    type: DEPARTURES_FETCHING
-  }
-}
+const fetchingDepartures = () => ({
+  type: DEPARTURES_FETCHING
+})
 
 /**
  * API call succesfully returned data.
@@ -89,12 +87,10 @@ function fetchingDepartures () {
  * @param {array} departures - array of objects containing departure data
  * @returns {object}
  */
-function successDepartures (departures) {
-  return {
-    type: DEPARTURES_SUCCESS,
-    departures
-  }
-}
+const successDepartures = (departures) => ({
+  type: DEPARTURES_SUCCESS,
+  departures
+})
 
 
 /**
@@ -102,9 +98,9 @@ function successDepartures (departures) {
  *
  * @returns {object}
  */
-export function resetDepartures () {
-  return { type: DEPARTURES_RESET }
-}
+export const resetDepartures = () => ({
+  type: DEPARTURES_RESET
+})
 
 
 export function getLineStatuses () {
@@ -116,9 +112,7 @@ export function getLineStatuses () {
   }
 }
 
-export function successLineStatuses (statuses) {
-  return {
-    type: LINE_STATUSES_SUCCESS,
-    statuses
-  }
-}
+export const successLineStatuses = (statuses) => ({
+  type: LINE_STATUSES_SUCCESS,
+  statuses
+})

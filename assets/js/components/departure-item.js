@@ -18,7 +18,7 @@ export default class DepartureItem extends Component {
                 return (
                   <p className="departure-item__content" key={ key }>{ formatTime(time) }</p>
                 )
-              })}
+              }) }
             </div>
           )
         }) }

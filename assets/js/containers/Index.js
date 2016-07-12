@@ -22,7 +22,7 @@ export class Index extends Component {
     return (
       <div className={ classes }>
         <div className={ 'full-height' }>
-          { mapObject(lines, (key, value) => <IndexItem key={ key } line={ value } /> ) }
+          { mapObject(lines, (key, value) => <IndexItem key={ key } line={ value } />) }
         </div>
         <div>
           { this.props.children }
@@ -38,12 +38,8 @@ Index.propTypes = {
   lines: PropTypes.object.isRequired
 }
 
-function mapStateToProps (state) {
-  const { lines } = state
-
-  return {
-    lines
-  }
-}
+const mapStateToProps = (state) => ({
+  lines: state.lines
+})
 
 export default connect(mapStateToProps)(Index)

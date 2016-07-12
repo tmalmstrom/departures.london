@@ -8,7 +8,7 @@ import {
   Router
 } from 'react-router'
 
-import fetch from './utils/fetch'
+import fetch from './utils/fetch' // eslint-disable-line
 
 import App from './containers/App'
 import Departures from './containers/Departures'
