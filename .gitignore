@@ -9,5 +9,4 @@ logs/*
 .env
 coverage/
 test/coverage
-api.log
-error.log
+public/favicons/
