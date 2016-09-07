@@ -3,7 +3,8 @@ const express = require('express'),
       path = require('path'),
       hbs = require('hbs'),
       compression = require('compression'),
-      port = process.env.PORT || 8000
+      port = process.env.PORT || 8000,
+      isDev = process.env.production || true
 
 let app = express()
 
@@ -19,8 +20,8 @@ app.use(bodyParser.json())
 app.use(compression())
 
 app.set('views', `${__dirname}/public`)
-app.set('view engine', 'html')
-app.engine('html', hbs.__express)
+app.set('view engine', 'hbs')
+app.engine('hbs', hbs.__express)
 app.use(express.static(path.join(__dirname, 'public')))
 
 
@@ -30,9 +31,9 @@ app.get(`${ API_URL }/statuses`, require('./routes/statuses'))
 
 app.get('*', (req, res) => {
   if (isValidRoute(req.url)) {
-    return res.render('index', { status: 200 } )
+    return res.render('index', { status: 200, isDev })
   } else {
-    return res.render('index', { status: 404 } )
+    return res.render('index', { status: 404, isDev })
   }
 })
 

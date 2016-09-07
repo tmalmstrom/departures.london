@@ -11,11 +11,14 @@ export default class IndexItem extends Component {
           })
 
     return (
-      <Link to={ `\/${line.url}` } className={ classes } style={{ background: line.color }}>
-        { line.title }
-        { line.status &&
-          <span> { line.status } </span>
-        }
+      <Link
+        to={ `\/${ line.url }` }
+        className={ classes }
+        style={{ background: line.color }}>
+          { line.title }
+          { line.status &&
+            <span> { line.status } </span>
+          }
       </Link>
     )
   }
