@@ -21,7 +21,7 @@ export class Index extends Component {
 
     return (
       <div className={ classes }>
-        <div className={ 'full-height' }>
+        <div className="full-height">
           { mapObject(lines, (key, value) => <IndexItem key={ key } line={ value } />) }
         </div>
         <div>

@@ -8,7 +8,7 @@ export default class DepartureItem extends Component {
     const { platform, index } = this.props
 
     return (
-      <div key={ index } className={ 'inner-flex' }>
+      <div key={ index } className="inner-flex">
         <h1>{ index }</h1>
         { mapObject(platform, (key) => {
           return (

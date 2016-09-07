@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class NotFound extends Component {
   render () {
     return (
-      <div className={ 'four-one-four' }>
+      <div className="four-one-four">
         <h1>404 - Page not found</h1>
         <p>Alternatively, this page can be used for real-time updates on Southern Rails arrival times</p>
 

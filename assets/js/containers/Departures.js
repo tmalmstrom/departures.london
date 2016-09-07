@@ -71,7 +71,7 @@ export class Departures extends Component {
       <div className={ classes } style={ style }>
         { this.renderContent(departures, isDark) }
 
-        <p className={ 'sticky-bottom' }>Made by <a href="http://tomspeak.co.uk">Tom Speak</a> | <a href="http://github.com/tomspeak/departures.london">Github</a></p>
+        <p className="sticky-bottom">Made by <a href="http://tomspeak.co.uk">Tom Speak</a> | <a href="http://github.com/tomspeak/departures.london">Github</a></p>
       </div>
     )
   }

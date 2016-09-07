@@ -12,7 +12,7 @@ export default class StationItem extends Component {
 
     return (
       <div>
-        <Link to={ `\/${ line }/${ url }` } activeStyle={ activeStyle } className={ 'station-item' }>
+        <Link to={ `\/${ line }/${ url }` } activeStyle={ activeStyle } className="station-item">
           { title }
         </Link>
       </div>
