@@ -5,11 +5,8 @@ const request = require('request'),
 
 const sortObjectByKey = require('./../utils/sort-object-by-key')
 
-const logger = require('./../utils/logger').api
 
 module.exports = (req, res) => {
-  logger.info(req.ip)
-
   let { line, stationId } = req.params,
       appId = process.env.APP_ID,
       appKey = process.env.APP_KEY,
