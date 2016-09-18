@@ -12,8 +12,8 @@
   },
   "scripts": {
     "webpack": "webpack-dev-server --hot --progress --colors",
-    "start": "nf start -j Procfile.dev -p 8000",
-    "postinstall": "NODE_ENV=production webpack --config ./webpack.prod.config.js",
+    "start": "nf start -j Procfile.dev -p 2000",
+    "postinstall": "webpack --config ./webpack.prod.config.js",
     "lint": "eslint . --ext .js --fix || true",
     "pre-commit-lint": "eslint $(git diff-index --name-only HEAD | grep -e .js$)",
     "test": "mocha --compilers js:babel-register -r ignore-styles -r ./test/setup.js --recursive",

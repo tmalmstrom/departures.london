@@ -3,7 +3,7 @@ const express = require('express'),
       path = require('path'),
       hbs = require('hbs'),
       compression = require('compression'),
-      port = process.env.PORT || 8000,
+      port = process.env.PORT || 1000,
       isDev = process.env.production || true
 
 let app = express()
