@@ -29,7 +29,7 @@ module.exports = (req, res) => {
     //I cannot see a reliable way to distinguish between errors or not, this is
     //a lesser of two evils compared to a direct string comparison from their
     //very long API Error String.
-    if (departures.httpStatusCode) {
+    if (departures && departures.httpStatusCode) {
       return res.status(500).send({ message: departures.message })
     }
 

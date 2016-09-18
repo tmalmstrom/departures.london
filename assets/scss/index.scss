@@ -57,8 +57,9 @@ $desktop-width: 1400px;
 }
 
 .sticky-bottom {
-  position: fixed;
+  position: absolute;
   display: block;
+  right: 15px;
   bottom: -15px; //scrollbar
   font-size: 10px;
   font-family: Sans-Serif;
@@ -199,10 +200,15 @@ a {
   .station-item {
     display: block;
     padding: 24px;
+
+      &:hover {
+        font-weight: 700;
+      }
   }
 
 .departures {
   display: block !important;
+  position: relative;
   -webkit-overflow-scrolling: touch;
   height: calc(100vh + 15px); //scrollbars
   position: absolute;
@@ -215,10 +221,12 @@ a {
   padding: 0 24px;
 
     @include palm {
-      width: 90%;
+      width: 85vw;
       overflow: auto;
-      //overflow-x: hidden;
-      //overflow-y: scroll;
+      position: relative;
+      right: -10vw;
+      overflow: initial;
+      overflow-y: scroll;
     }
 }
   .departure-item {

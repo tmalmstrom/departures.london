@@ -35,8 +35,7 @@ export class Departures extends Component {
   componentWillReceiveProps (nextProps) {
     //Ensure that the user hasn't just clicked on the same station
     if (
-        !isEqual(nextProps.params.station, this.props.params.station)
-        ||
+        !isEqual(nextProps.params.station, this.props.params.station) ||
         !isEqual(nextProps.filteredStations, this.props.filteredStations)
     ) {
       const { filteredStations } = nextProps,
@@ -68,8 +67,10 @@ export class Departures extends Component {
           }
 
     return (
-      <div className={ classes } style={ style }>
-        { this.renderContent(departures, isDark) }
+      <div>
+        <div className={ classes } style={ style }>
+          { this.renderContent(departures, isDark) }
+        </div>
 
         <p className="sticky-bottom">Made by <a href="http://tomspeak.co.uk">Tom Speak</a> | <a href="http://github.com/tomspeak/departures.london">Github</a></p>
       </div>

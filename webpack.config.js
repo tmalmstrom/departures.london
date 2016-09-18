@@ -3,7 +3,7 @@ var path = require('path'), //eslint-disable-line no-var
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:8080',
+    'webpack-dev-server/client?http://0.0.0.0:8080',
     'webpack/hot/only-dev-server',
     path.resolve(__dirname, './assets/js/index.js')
   ],
