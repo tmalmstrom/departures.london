@@ -6,7 +6,7 @@ On demand departure data for TFL's Underground, Overground and DLR services.
 
 ### I think something has broken?
 
-Please report all [issues over here](http://github.com/tomspeak/departures.london/issues). If you do not have a GitHub account then email me: <hello+departures@tomspeak.co.uk>.
+Please report all [issues over here](http://github.com/tomspeak/departures.london/issues). If you do not have a GitHub account then email me: hello+departures@tomspeak.co.uk
 
 ### It says there are no departures at my station?
 
