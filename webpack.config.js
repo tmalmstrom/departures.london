@@ -29,6 +29,7 @@ module.exports = {
         test: /\.js?$/,
         exclude: /(node_modules|bower_components)/,
         loaders: [
+          'react-hot-loader/webpack',
           'babel'
         ]
       },
