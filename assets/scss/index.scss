@@ -182,18 +182,26 @@ a {
       @include palm {
         display: none;
       }
+
+      &:last-of-type {
+        @include palm {
+          display: block;
+        }
+      }
     }
 
     &.has-children .back {
       display: none;
+      cursor: pointer;
 
       @include palm {
         display: block;
         position: fixed;
         top: 50%;
-        left: 9%;
+        left: 9.5%;
         font-size: 44px;
         transform: translate3d(0, -50%, 0);
+        z-index: 1000;
       }
     }
 }
