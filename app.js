@@ -4,7 +4,7 @@ const express = require('express'),
       hbs = require('hbs'),
       compression = require('compression'),
       port = process.env.PORT || 1000,
-      isDev = process.env.production || true
+      isDev = (process.env.NODE_ENV === 'production') ? false : true
 
 let app = express()
 
