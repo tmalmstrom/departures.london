@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
+import { Link } from 'react-router'
 
 import StationItem from '../components/station-item'
 import * as actions from '../actions/index'
@@ -57,9 +58,14 @@ export class Stations extends Component {
     }
 
     return (
-      <ReactCSSTransitionGroup transitionName="slide-in" transitionAppear={ true }>
+      <ReactCSSTransitionGroup
+        transitionName="slide-in"
+        transitionAppear={ true }
+        transitionAppearTimeout={ 700 }
+        transitionLeaveTimeout={ 0 }
+        transitionEnterTimeout={ 0 }>
         <div className={ classes } style={ style }>
-          <a className="back" onClick={ this.context.router.goBack }>&lt;</a>
+          <Link className="back" to={ `/${ line }` }>&lt;</Link>
           <div className="u-scroll-wrapper">
             { element }
             { this.props.children }
@@ -81,7 +87,7 @@ Stations.propTypes = {
   getFilteredSortedStations: PropTypes.func.isRequired
 }
 
-function mapStateToProps (state) {
+const mapStateToProps = (state) => {
   const { filteredStations, lines, stations, stationsOnLines } = state
 
   return {
