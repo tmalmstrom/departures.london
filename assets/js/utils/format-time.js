@@ -18,7 +18,7 @@ export default (timeToStation) => {
     return DUE
   }
 
-  if (timeToStation < 30) {
+  if (timeToStation <= 30) {
     return ARRIVING
   }
 
