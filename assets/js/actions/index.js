@@ -103,7 +103,12 @@ export const resetDepartures = () => ({
 })
 
 
-export function getLineStatuses () {
+/**
+ * Fetch line statuses from API
+ *
+ * @returns {object}
+ */
+export const getLineStatuses = () => {
   return (dispatch) => {
     return fetch(`${ API_URL }/statuses`)
       .then(res => res.json())
@@ -112,6 +117,12 @@ export function getLineStatuses () {
   }
 }
 
+/**
+ * API call succesfully returned line status data
+ *
+ * @param {object} statuses - line statuses
+ * @returns {object}
+ */
 export const successLineStatuses = (statuses) => ({
   type: LINE_STATUSES_SUCCESS,
   statuses
