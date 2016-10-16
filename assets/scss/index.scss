@@ -125,8 +125,11 @@ a {
 .inner-flex {
   width: 100%;
   flex: 1;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+
+    @include palm {
+      border-bottom-style: solid;
+      border-bottom-width: 1px;
+    }
 
     &:last-of-type {
       border-bottom: none !important;
