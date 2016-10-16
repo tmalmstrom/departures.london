@@ -87,7 +87,7 @@ export class Departures extends Component {
   renderContent (departures, isDark) {
     if (!isEmpty(departures) && !departures.isFetching) {
       return (
-        <div className={ 'flex' }>
+        <div className="flex">
           { mapObject(departures, (index, platform) => {
             return <DepartureItem isDark={ isDark } platform={ platform } index={ index } key={ index } />
           }) }

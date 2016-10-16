@@ -13,7 +13,7 @@ const props = {
 const wrapper = shallow(<DepartureItem { ...props } />)
 
 test('should have a title with the station name', t => {
-  t.true(wrapper.contains(<h3>Liverpool Street</h3>))
+  t.true(wrapper.contains(<h2>Liverpool Street</h2>))
 })
 
 test('should render correct time until', t => {

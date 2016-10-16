@@ -226,7 +226,6 @@ a {
 
 .departures {
   display: block !important;
-  position: relative;
   -webkit-overflow-scrolling: touch;
   height: calc(100vh + 15px); //scrollbars
   position: absolute;
@@ -242,10 +241,13 @@ a {
       padding-left: 0;
     }
 
-
     @include palm {
       width: 100%;
-      overflow: auto;
+      height: 100%;
+      min-height: 100vh;
+      right: 0;
+      padding: 4px 24px 34px;
+      position: relative;
       overflow-y: scroll;
     }
 }
@@ -256,9 +258,6 @@ a {
       letter-spacing: 1.5px;
     }
 
-.departures-error {
-
-}
 
 .four-one-four {
   height: 100vh;
@@ -278,11 +277,16 @@ a {
 .title {
   display: none;
   padding: 24px 24px 0px;
-  font-size: 28px;
+  font-size: 21px;
   text-align: left;
 
     & > a {
       display: block;
+
+        & > span {
+          display: inline-block;
+          margin-left: 12px;
+        }
     }
 }
 
@@ -312,4 +316,13 @@ a {
 }
 @keyframes scaleUp {
   from { opacity: 0; -webkit-transform: scale(.8); transform: scale(.8); }
+}
+
+@-webkit-keyframes fadeInOut {
+  0% { opacity: 0.3; transform: scale(0.95); }
+  100% { opacity: 0.9; transform: scale(1); }
+}
+@keyframes fadeInOut {
+  0% { opacity: 0.3; transform: scale(0.95); }
+  100% { opacity: 0.9; transform: scale(1); }
 }
