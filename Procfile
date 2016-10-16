@@ -1,2 +1,2 @@
-web: node --use-strict --harmony --harmony_destructuring app.js
+web: node --use-strict --harmony app.js
 
