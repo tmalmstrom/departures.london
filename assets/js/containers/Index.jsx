@@ -1,15 +1,16 @@
 import React, { Component, PropTypes } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 
-import { getLineStatuses } from '../actions/index'
+import * as indexActions from '../actions/index'
 
-import IndexItem from '../components/index-item'
+import IndexItem from '../components/index-item.jsx'
 import mapObject from '../utils/map-object'
 
 export class Index extends Component {
   componentDidMount () {
-    this.props.dispatch(getLineStatuses())
+    this.props.actions.getLineStatuses()
   }
 
   render () {
@@ -42,4 +43,8 @@ const mapStateToProps = (state) => ({
   lines: state.lines
 })
 
-export default connect(mapStateToProps)(Index)
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(indexActions, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index)

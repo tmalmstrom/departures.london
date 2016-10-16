@@ -34,8 +34,10 @@
   <body>
     <div id="app"></div>
     {{#if isDev}}
+      <script src="http://0.0.0.0:8080/public/dist/vendor.bundle.js"></script>
       <script src="http://0.0.0.0:8080/public/dist/bundle.js"></script>
     {{ else }}
+      <script src="/dist/vendor.bundle.js"></script>
       <script src="/dist/bundle.js"></script>
     {{/if}}
 

@@ -53,6 +53,11 @@ $desktop-width: 1400px;
     & .index-item {
       padding-left: 27px;
       text-align: left;
+
+        @include palm {
+          text-align: center;
+          padding: inherit;
+        }
     }
 }
 
@@ -75,10 +80,6 @@ $desktop-width: 1400px;
 }
 
 /** MISC **/
-.back {
-  display: none;
-}
-
 .spinner {
   font-size: 72px;
   opacity: 0.3;
@@ -124,9 +125,20 @@ a {
 .inner-flex {
   width: 100%;
   flex: 1;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+
+    &:last-of-type {
+      border-bottom: none !important;
+    }
 
     & > h1 {
       word-break: break-word;
+      text-shadow: 0px 1px 0px rgba(0,0,0,0.2);
+
+      @include palm {
+        font-size: 24px;
+      }
     }
 
     @include lap {
@@ -159,7 +171,11 @@ a {
 
       span {
         opacity: 0.8;
-        font-size: 80%;
+        font-size: 75%;
+      }
+
+      @include palm {
+        font-size: 20px;
       }
   }
 
@@ -174,8 +190,7 @@ a {
   text-align: left;
 
     @include palm {
-      width: 94%;
-      box-shadow: -1px 0 10px rgba(0, 0, 0, 0.5);
+      width: 100%;
     }
 
     &.has-children .u-scroll-wrapper > div {
@@ -189,30 +204,22 @@ a {
         }
       }
     }
+}
 
-    &.has-children .back {
-      display: none;
-      cursor: pointer;
 
-      @include palm {
-        display: block;
-        position: fixed;
-        top: 50%;
-        left: 9.5%;
-        font-size: 44px;
-        transform: translate3d(0, -50%, 0);
-        z-index: 1000;
-      }
+.station-item {
+  display: block;
+  padding: 24px;
+
+    &:hover {
+      font-weight: 700;
+    }
+
+    @include palm {
+      text-align: center;
+      font-size: 20px;
     }
 }
-  .station-item {
-    display: block;
-    padding: 24px;
-
-      &:hover {
-        font-weight: 700;
-      }
-  }
 
 .departures {
   display: block !important;
@@ -228,75 +235,78 @@ a {
   margin-right: 15px; //scrolling
   padding: 0 24px;
 
+    & .title {
+      padding-left: 0;
+    }
+
+
     @include palm {
-      width: 85vw;
+      width: 100%;
       overflow: auto;
-      position: relative;
-      right: -10vw;
-      overflow: initial;
       overflow-y: scroll;
     }
 }
   .departure-item {
-    margin-bottom: 44px;
+    margin-bottom: 22px;
   }
     .departure-item__content {
       letter-spacing: 1.5px;
     }
 
+.departures-error {
+
+}
+
 .four-one-four {
-  height: 100%;
+  height: 100vh;
+  width: 100%;
+  padding: 24px;
   display: flex;
   flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: #444;
+  text-align: center;
 }
 
 
+/** TYPOGRAPHY **/
+.title {
+  display: none;
+  padding: 24px 24px 0px;
+  font-size: 28px;
+  text-align: left;
+
+    & > a {
+      display: block;
+    }
+}
+
+.link {
+  text-decoration: underline;
+}
+
+/** UTILITY **/
+.show-mobile {
+  @include palm {
+    display: block;
+  }
+}
 
 
 /** ANIMATIONS **/
-@-webkit-keyframes fadeInOut {
-  0% { opacity: 0.3; transform: scale(0.95); }
-  100% { opacity: 0.9; transform: scale(1); }
+.scale-transition-enter {
+  -webkit-animation: scaleUp .6s ease both;
+  animation: scaleUp .6s ease both;
 }
-@keyframes fadeInOut {
-  0% { opacity: 0.3; transform: scale(0.95); }
-  100% { opacity: 0.9; transform: scale(1); }
+.scale-transition-appear {
+  -webkit-animation: scaleUp .6s ease both;
+  animation: scaleUp .6s ease both;
 }
-
-.slide-in-appear {
-  transform: translate3d(100%, 0px, 0px);
+@-webkit-keyframes scaleUp {
+  from { opacity: 0; -webkit-transform: scale(.8); }
 }
-.slide-in-appear.slide-in-appear-active {
-  transform: translate3d(0%, 0px, 0px);
-  transition: transform 0.7s ease;
+@keyframes scaleUp {
+  from { opacity: 0; -webkit-transform: scale(.8); transform: scale(.8); }
 }
-
-.example-enter {
-  opacity: 0.01;
-}
-  .example-enter.example-enter-active {
-    opacity: 1;
-    transition: opacity 1s ease;
-  }
-
-.example-leave {
-  display: none;
-  opacity: 1;
-}
-  .example-leave.example-leave-active {
-    display: none;
-    opacity: 0.01;
-    transition: opacity 0s ease-in;
-  }
-
-.example-appear {
-  opacity: 0.01;
-}
-  .example-appear.example-appear-active {
-    opacity: 1;
-    transition: opacity .5s ease-in;
-  }

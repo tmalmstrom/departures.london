@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
 import { Link } from 'react-router'
 
-import StationItem from '../components/station-item'
-import * as actions from '../actions/index'
+import StationItem from '../components/station-item.jsx'
+import * as actions from '../actions/stations'
 
 export class Stations extends Component {
   static contextTypes = {
@@ -13,7 +14,7 @@ export class Stations extends Component {
   }
 
   componentDidMount () {
-    const { getFilteredSortedStations } = this.props,
+    const { getFilteredSortedStations } = this.props.actions,
           { line }  = this.props.params
 
     getFilteredSortedStations(line)
@@ -21,7 +22,7 @@ export class Stations extends Component {
 
   componentDidUpdate (prevProps) {
     if (prevProps.params.line != this.props.params.line) {
-      const { getFilteredSortedStations } = this.props,
+      const { getFilteredSortedStations } = this.props.actions,
             { line }  = this.props.params
 
       getFilteredSortedStations(line)
@@ -31,7 +32,7 @@ export class Stations extends Component {
   render () {
     const { lines, filteredStations } = this.props,
           { line } = this.props.params,
-          { isDark } = lines[line], //@todo this errors if no line is found
+          { isDark } = lines[line],
           style = {
             background: lines[line].color
           },
@@ -47,7 +48,7 @@ export class Stations extends Component {
     if (filteredStations) {
       element = (
         filteredStations.map((value, index) => {
-          return  <StationItem key={ index } station={ value } line={ line } bg={ lines[line].colorLight } />
+          return  <StationItem ref={ index } key={ index } station={ value } line={ line } bg={ lines[line].colorLight } />
         })
        )
     } else {
@@ -59,14 +60,21 @@ export class Stations extends Component {
 
     return (
       <ReactCSSTransitionGroup
-        transitionName="slide-in"
+        transitionName="scale-transition"
         transitionAppear={ true }
-        transitionAppearTimeout={ 700 }
-        transitionLeaveTimeout={ 0 }
-        transitionEnterTimeout={ 0 }>
+        transitionEnter={ true }
+        transitionLeave={ true }
+        transitionAppearTimeout={ 440 }
+        transitionLeaveTimeout={ 500 }
+        transitionEnterTimeout={ 500 }>
         <div className={ classes } style={ style }>
-          <Link className="back" to={ `/${ line }` }>&lt;</Link>
           <div className="u-scroll-wrapper">
+            <div className="title show-mobile">
+              <Link to="/">
+                &larr;
+                <span>Lines</span>
+              </Link>
+            </div>
             { element }
             { this.props.children }
           </div>
@@ -84,18 +92,17 @@ Stations.propTypes = {
   }),
   lines: PropTypes.object.isRequired,
   filteredStations: PropTypes.array.isRequired,
-  getFilteredSortedStations: PropTypes.func.isRequired
 }
 
-const mapStateToProps = (state) => {
-  const { filteredStations, lines, stations, stationsOnLines } = state
+const mapStateToProps = (state) => ({
+  filteredStations: state.filteredStations,
+  lines: state.lines,
+  stations: state.stations,
+  stationsOnLines: state.stationsOnLines
+})
 
-  return {
-    filteredStations,
-    lines,
-    stations,
-    stationsOnLines
-  }
-}
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators(actions, dispatch)
+})
 
-export default connect(mapStateToProps, actions)(Stations)
+export default connect(mapStateToProps, mapDispatchToProps)(Stations)

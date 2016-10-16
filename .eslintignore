@@ -1,3 +1,8 @@
-public/dist/
+public/**/**
 node_modules/
 bower_components/
+test/
+coverage/
+data/
+.nyc_output/**/**
+.git/**/**

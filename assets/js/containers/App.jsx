@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 import '../../scss/index.scss'
 
-export class App extends Component {
+export default class App extends Component {
   render () {
     return (
       <div>

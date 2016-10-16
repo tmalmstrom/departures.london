@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 
 import reducer from '../reducers/index'
-import { lines, stations, stationsOnLines } from './../../../data/index'
+import { lines, stations, stationsOnLines } from './../../../data/index.min.js'
 
 const initialState = {
   departures: { },

@@ -1,4 +1,6 @@
 # [Departures](http://departures.london)
+[![Build Status](https://travis-ci.org/tomspeak/departures.london.svg?branch=master)](https://travis-ci.org/tomspeak/departures.london)
+[![Coverage Status](https://coveralls.io/repos/github/tomspeak/departures.london/badge.svg?branch=master&v=500)](https://coveralls.io/github/tomspeak/departures.london?branch=master)
 
 On demand departure data for TFL's Underground, Overground and DLR services.
 

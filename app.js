@@ -1,6 +1,6 @@
 const express = require('express'),
       bodyParser = require('body-parser'),
-      path = require('path'),
+      { join } = require('path'),
       hbs = require('hbs'),
       compression = require('compression'),
       port = process.env.PORT || 1000,
@@ -22,7 +22,7 @@ app.use(compression())
 app.set('views', `${__dirname}/public`)
 app.set('view engine', 'hbs')
 app.engine('hbs', hbs.__express)
-app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.static(join(__dirname, 'public')))
 
 
 app.get(`${ API_URL }/:line/:stationId`, require('./routes/departures'))
