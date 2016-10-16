@@ -17,7 +17,7 @@ export default class DepartureItem extends Component {
         { mapObject(platform, (station) => {
           return (
             <div className="departure-item" key={ station }>
-              <h3>{ station }</h3>
+              <h2>{ station }</h2>
               { platform[station].map((time, key) => {
                 return (
                   <p className="departure-item__content" key={ key }>{ formatTime(time) }</p>
