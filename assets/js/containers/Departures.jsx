@@ -2,10 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { find, isEqual, isEmpty } from 'lodash'
 import classNames from 'classnames'
+import { Link } from 'react-router'
 
 import { getDepartures, resetDepartures } from '../actions/index'
-import DepartureItem from '../components/departure-item'
-import Spinner from '../components/spinner'
+import DepartureItem from '../components/departure-item.jsx'
+import Spinner from '../components/spinner.jsx'
 import mapObject from '../utils/map-object'
 
 export class Departures extends Component {
@@ -15,10 +16,6 @@ export class Departures extends Component {
 
   constructor (props, context) {
     super(props, context)
-  }
-
-  routerWillLeave () {
-    this.props.dispatch(resetDepartures())
   }
 
   componentDidMount () {
@@ -45,6 +42,10 @@ export class Departures extends Component {
     }
   }
 
+  routerWillLeave () {
+    this.props.dispatch(resetDepartures())
+  }
+
   getDepartures (filteredStations, line, station) {
     const { dispatch } = this.props
 
@@ -57,7 +58,7 @@ export class Departures extends Component {
   render () {
     const { departures, lines } = this.props,
           { line } = this.props.params,
-          { isDark } = lines[line],
+          { isDark, title } = lines[line],
           classes = classNames({
             'is-dark': isDark,
             'departures': true
@@ -69,6 +70,12 @@ export class Departures extends Component {
     return (
       <div>
         <div className={ classes } style={ style }>
+          <div className="title show-mobile">
+            <Link to={ `\/${ line }` }>
+              &larr;
+              <span>{ title }</span>
+            </Link>
+          </div>
           { this.renderContent(departures, isDark) }
         </div>
 
@@ -82,14 +89,19 @@ export class Departures extends Component {
       return (
         <div className={ 'flex' }>
           { mapObject(departures, (index, platform) => {
-            return <DepartureItem platform={ platform } index={ index } key={ index } />
+            return <DepartureItem isDark={ isDark } platform={ platform } index={ index } key={ index } />
           }) }
         </div>
       )
     } else if (departures.isFetching) {
       return <Spinner isDark={ isDark } />
     } else {
-      return ( <p>Oh jeez, there are no trains I am afraid.</p> )
+      return (
+        <div className="departures-error">
+          <Spinner />
+          <p>I'm sorry, Dave. I'm afraid there are no trains at this time.</p>
+        </div>
+      )
     }
   }
 }
@@ -98,7 +110,7 @@ Departures.displayName = 'Departures'
 
 Departures.propTypes = {
   departures: PropTypes.object.isRequired,
-  filteredStations: PropTypes.object.isRequired,
+  filteredStations: PropTypes.array.isRequired,
   lines: PropTypes.object.isRequired,
   params: PropTypes.shape({
     line: PropTypes.string.isRequired,

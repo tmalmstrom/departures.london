@@ -10,11 +10,11 @@ import {
 
 import fetch from './utils/fetch' // eslint-disable-line
 
-import App from './containers/App'
-import Departures from './containers/Departures'
-import Index from './containers/Index'
-import NotFound from './containers/NotFound'
-import Stations from './containers/Stations'
+import App from './containers/App.jsx'
+import Departures from './containers/Departures.jsx'
+import Index from './containers/Index.jsx'
+import NotFound from './containers/NotFound.jsx'
+import Stations from './containers/Stations.jsx'
 
 import store from './store/index'
 

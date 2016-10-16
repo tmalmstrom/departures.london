@@ -5,16 +5,20 @@ import formatTime from '../utils/format-time'
 
 export default class DepartureItem extends Component {
   render () {
-    const { platform, index } = this.props
+    const { platform, index, isDark } = this.props
 
     return (
-      <div key={ index } className="inner-flex">
+      <div
+        key={ index }
+        className="inner-flex"
+        style={{ borderColor: (isDark) ? '#444' : '#FFF' }}
+      >
         <h1>{ index }</h1>
-        { mapObject(platform, (key) => {
+        { mapObject(platform, (station) => {
           return (
-            <div className="departure-item" key={ key }>
-              <h3>{ key }</h3>
-              { platform[key].map((time, key) => {
+            <div className="departure-item" key={ station }>
+              <h3>{ station }</h3>
+              { platform[station].map((time, key) => {
                 return (
                   <p className="departure-item__content" key={ key }>{ formatTime(time) }</p>
                 )

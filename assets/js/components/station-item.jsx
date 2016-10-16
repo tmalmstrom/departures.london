@@ -2,6 +2,15 @@ import React, { Component, PropTypes } from 'react'
 import { Link } from 'react-router'
 
 export default class StationItem extends Component {
+  componentDidMount () {
+    const { currentStation } = this.props,
+          { url } = this.props.station
+
+    if (currentStation === url) {
+      this.scrollIntoView()
+    }
+  }
+
   render () {
     const { title, url } = this.props.station,
           { line, bg } = this.props,

@@ -10,3 +10,4 @@ logs/*
 coverage/
 test/coverage
 public/favicons/
+.nyc_output/

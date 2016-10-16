@@ -49,6 +49,8 @@ module.exports = (req, res) => {
       //If there's no destination name, it will say 'Check Front of Train'
       //This string is pulled from `towards`.
       destinationName = destinationName ? destinationName : towards
+      destinationName = destinationName.replace('Underground Station', '')
+      destinationName = destinationName.replace('Rail Station', '')
 
       formattedDepartures[platformName] = formattedDepartures[platformName] || { }
 
