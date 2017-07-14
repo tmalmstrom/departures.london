@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import classNames from 'classnames'
@@ -59,27 +58,18 @@ export class Stations extends Component {
     }
 
     return (
-      <ReactCSSTransitionGroup
-        transitionName="scale-transition"
-        transitionAppear={ true }
-        transitionEnter={ true }
-        transitionLeave={ true }
-        transitionAppearTimeout={ 440 }
-        transitionLeaveTimeout={ 500 }
-        transitionEnterTimeout={ 500 }>
-        <div className={ classes } style={ style }>
-          <div className="u-scroll-wrapper">
-            <div className="title show-mobile">
-              <Link to="/">
-                &larr;
-                <span>Lines</span>
-              </Link>
-            </div>
-            { element }
-            { this.props.children }
+      <div className={ classes } style={ style }>
+        <div className="u-scroll-wrapper">
+          <div className="title show-mobile">
+            <Link to="/">
+              &larr;
+              <span>Lines</span>
+            </Link>
           </div>
+          { element }
+          { this.props.children }
         </div>
-      </ReactCSSTransitionGroup>
+      </div>
     )
   }
 }

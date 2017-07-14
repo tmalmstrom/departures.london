@@ -303,21 +303,6 @@ a {
 
 
 /** ANIMATIONS **/
-.scale-transition-enter {
-  -webkit-animation: scaleUp .6s ease both;
-  animation: scaleUp .6s ease both;
-}
-.scale-transition-appear {
-  -webkit-animation: scaleUp .6s ease both;
-  animation: scaleUp .6s ease both;
-}
-@-webkit-keyframes scaleUp {
-  from { opacity: 0; -webkit-transform: scale(.8); }
-}
-@keyframes scaleUp {
-  from { opacity: 0; -webkit-transform: scale(.8); transform: scale(.8); }
-}
-
 @-webkit-keyframes fadeInOut {
   0% { opacity: 0.3; transform: scale(0.95); }
   100% { opacity: 0.9; transform: scale(1); }
