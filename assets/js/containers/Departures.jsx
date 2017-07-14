@@ -99,7 +99,7 @@ export class Departures extends Component {
       return (
         <div className="departures-error">
           <Spinner />
-          <p>I'm sorry, Dave. I'm afraid there are no trains at this time.</p>
+          <p>Sorry m8, no departures.</p>
         </div>
       )
     }
