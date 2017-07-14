@@ -1,7 +1,8 @@
 const request = require('request'),
       sortBy = require('lodash/sortBy'),
       forEach = require('lodash/forEach'),
-      isEmpty = require('lodash/isEmpty')
+      isEmpty = require('lodash/isEmpty'),
+      cache = require('memory-cache')
 
 const sortObjectByKey = require('./../utils/sort-object-by-key')
 
@@ -12,6 +13,11 @@ module.exports = (req, res) => {
       appKey = process.env.APP_KEY,
       url = `https://api.tfl.gov.uk/Line/${ line }/Arrivals?stopPointId=${ stationId }&app_id=${ appId }&app_key=${ appKey }`
 
+  const cachedResponse = cache.get(`${line}${stationId}`)
+
+  if (cachedResponse) {
+    return res.status(200).send(cachedResponse)
+  }
 
   request(url, (err, response) => {
     let departures,
@@ -65,6 +71,8 @@ module.exports = (req, res) => {
     forEach(formattedDepartures, (value, key) => {
       formattedDepartures[key] = sortObjectByKey(formattedDepartures[key])
     })
+
+    cache.put(`${line}${stationId}`, formattedDepartures, 30000)
 
     return res.status(200).send(formattedDepartures)
   })

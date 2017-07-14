@@ -1,6 +1,7 @@
 const request = require('request'),
       isEmpty = require('lodash/isEmpty'),
-      groupBy = require('lodash/groupBy')
+      groupBy = require('lodash/groupBy'),
+      cache = require('memory-cache')
 
 module.exports = (req, res) => {
   let statuses,
@@ -8,6 +9,12 @@ module.exports = (req, res) => {
       appId = process.env.APP_ID,
       appKey = process.env.APP_KEY,
       url = `https://api.tfl.gov.uk/Line/Mode/tube,dlr,overground/Status?app_id=${ appId }&app_key=${ appKey }`
+
+  const cachedResponse = cache.get('statuses')
+
+  if (cachedResponse) {
+    return res.status(200).send(cachedResponse)
+  }
 
   request(url, (err, response) => {
     try {
@@ -36,6 +43,8 @@ module.exports = (req, res) => {
 
       formattedStatuses[lineKey] =  { status }
     })
+
+    cache.put('statuses', formattedStatuses, 30000)
 
     return res.status(200).send(formattedStatuses)
   })
