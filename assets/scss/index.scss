@@ -15,7 +15,7 @@
 
 
 /** SETTINGS **/
-$palm-width: 690px;
+$palm-width: 698px;
 $lap-width: 1200px;
 $desktop-width: 1400px;
 
@@ -140,7 +140,7 @@ a {
       text-shadow: 0px 1px 0px rgba(0,0,0,0.2);
 
       @include palm {
-        font-size: 24px;
+        font-size: 18px;
       }
     }
 
@@ -178,7 +178,7 @@ a {
       }
 
       @include palm {
-        font-size: 20px;
+        font-size: 14px;
       }
   }
 
@@ -249,10 +249,20 @@ a {
       padding: 4px 24px 34px;
       position: relative;
       overflow-y: scroll;
+
+      & .flex .inner-flex {
+        margin-top: 24px;
+      }
     }
 }
   .departure-item {
-    margin-bottom: 22px;
+    margin-bottom: 24px;
+
+    @include palm {
+      & > h2 {
+        font-size: 14px;
+      }
+    }
   }
     .departure-item__content {
       letter-spacing: 1.5px;
