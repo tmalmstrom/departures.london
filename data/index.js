@@ -1,92 +1,92 @@
 exports.lines = {
   'bakerloo': {
     'title': 'Bakerloo',
-    'color': '#795548',
-    'colorLight': '#8B675A',
+    'color': '#894E24',
+    'colorLight': '#B1652F',
     'isDark': false,
     'url': 'bakerloo'
   },
   'central': {
     'title': 'Central',
-    'color': '#F44336',
-    'colorLight': '#FF5252',
+    'color': '#DC241F',
+    'colorLight': '#E54D49',
     'isDark': false,
     'url': 'central'
   },
   'circle': {
     'title': 'Circle',
-    'color': '#FFEB3B',
-    'colorLight': '#FFFD4D',
+    'color': '#FFCE00',
+    'colorLight': '#FFD833',
     'isDark': true,
     'url': 'circle'
   },
   'district': {
     'title': 'District',
-    'color': '#4CAF50',
-    'colorLight': '#5EC162',
+    'color': '#007229',
+    'colorLight': '#00A53B',
     'isDark': false,
     'url': 'district'
   },
   'hammersmith-city': {
     'title': 'Hammersmith & City',
-    'color': '#E91E63',
-    'colorLight': '#FF4081',
-    'isDark': false,
+    'color': '#D799AF',
+    'colorLight': '#E5BECC',
+    'isDark': true,
     'url': 'hammersmith-city'
   },
   'jubilee': {
     'title': 'Jubilee',
-    'color': '#9E9E9E',
-    'colorLight': '#B0B0B0',
+    'color': '#6A7278',
+    'colorLight': '#838C92',
     'isDark': false,
     'url': 'jubilee'
   },
   'metropolitan': {
     'title': 'Metropolitan',
-    'color': '#9C27B0',
-    'colorLight': '#E040FB',
+    'color': '#751056',
+    'colorLight': '#A21677',
     'isDark': false,
     'url': 'metropolitan'
   },
   'northern': {
     'title': 'Northern',
-    'color': '#212121',
-    'colorLight': '#333333',
+    'color': '#000000',
+    'colorLight': '#1A1A1A',
     'isDark': false,
     'url': 'northern'
   },
   'piccadilly': {
     'title': 'Piccadilly',
-    'color': '#3F51B5',
-    'colorLight': '#536DFE',
+    'color': '#0019A8',
+    'colorLight': '#0021DB',
     'isDark': false,
     'url': 'piccadilly'
   },
   'victoria': {
     'title': 'Victoria',
-    'color': '#2196F3',
-    'colorLight': '#33A8FF',
+    'color': '#00A0E2',
+    'colorLight': '#16BBFf',
     'isDark': false,
     'url': 'victoria'
   },
   'waterloo-city': {
     'title': 'Waterloo & City',
-    'color': '#00BCD4',
-    'colorLight': '#12CEE6',
+    'color': '#76D0BD',
+    'colorLight': '#9CDDCF',
     'isDark': true,
     'url': 'waterloo-city'
   },
   'overground': {
     'title': 'Overground',
-    'color': '#F48026',
-    'colorLight': '#FF9238',
+    'color': '#E86A10',
+    'colorLight': '#F1863A',
     'isDark': true,
     'url': 'overground'
   },
   'dlr': {
     'title': 'DLR',
-    'color': '#03A9F4',
-    'colorLight': '#15BBFF',
+    'color': '#00AFAD',
+    'colorLight': '#00E2DF',
     'isDark': false,
     'url': 'dlr'
   }
